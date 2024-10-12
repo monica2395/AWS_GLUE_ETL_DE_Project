@@ -27,20 +27,20 @@ job = Job(glueContext)
 job.init(args["JOB_NAME"], args)
 
 # Script generated for node S3 bucket
-S3bucket_node1 = glueContext.create_dynamic_frame.from_catalog(
-    database="mydatabase", table_name="product", transformation_ctx="S3bucket_node1"
+myS3bucket_node = glueContext.create_dynamic_frame.from_catalog(
+    database="mydatabase", table_name="product", transformation_ctx="myS3bucket_node"
 )
 
-logger.info('print schema of S3bucket_node1')
-S3bucket_node1.printSchema()
+logger.info('print schema of myS3bucket_node')
+myS3bucket_node.printSchema()
 
-count = S3bucket_node1.count()
-print("Number of rows in S3bucket_node1 dynamic frame: ", count)
+count = myS3bucket_node.count()
+print("Number of rows in myS3bucket_node dynamic frame: ", count)
 logger.info('count for frame is {}'.format(count))
 
 # Script generated for node ApplyMapping
 ApplyMapping_node2 = ApplyMapping.apply(
-    frame=S3bucket_node1,
+    frame=myS3bucket_node,
     mappings=[
         ("marketplace", "string", "new_marketplace", "string"),
         ("customer_id", "long", "new_customer_id", "long"),
