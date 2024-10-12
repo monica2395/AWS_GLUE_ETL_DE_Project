@@ -1,3 +1,4 @@
+#LOADING ALL THE REQUIRED MODULES AND LIBRARY:
 import sys
 from awsglue.transforms import *
 from awsglue.utils import getResolvedOptions
